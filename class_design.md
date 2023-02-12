@@ -49,6 +49,10 @@ INSERT INTO accounts (username, email) VALUES ('am02034', 'annamag@email.com');
 INSERT INTO accounts (username, email) VALUES ('go4554', 'gerry@email.co.uk');
 INSERT INTO accounts (username, email) VALUES ('ad7733', 'anadiaz@email.co.uk');
 INSERT INTO accounts (username, email) VALUES ('te1221', 'tedwards@email.com');
+
+INSERT INTO posts (title, content, account_id) VALUES ('Tuesday', 'I feel happy', (SELECT id FROM accounts WHERE username='am02034'));
+INSERT INTO posts (title, content, account_id) VALUES ('Wednesday', 'I finished my exam!', (SELECT id FROM accounts WHERE username='go4554'));
+INSERT INTO posts (title, content, account_id) VALUES ('Friday', 'Happy birthday to me', (SELECT id FROM accounts WHERE username='te1221'));
 ```
 
 Run this SQL file on the database to truncate (empty) the table, and insert the seed data. Be mindful of the fact any existing records in the table will be deleted.

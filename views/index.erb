@@ -1,0 +1,14 @@
+<html>
+    <head></head>
+    <body>
+        <h1>Chitter</h1>
+        <a href="/posts/new">Create a post</a>
+        <%@post_feed.each do |post|%>
+        <div>
+            <h2><%=post.title%></h2>
+            <h3><%=post.time_stamp%></h3>
+            <p><%=post.content%></p>
+        </div>
+        <%end%>
+    </body>
+</html>
