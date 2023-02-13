@@ -32,8 +32,12 @@ class AccountsRepository
   
     # Add more methods below for each operation you'd like to implement.
   
-    # def create(student)
-    # end
+    def create(account)
+      sql = 'INSERT INTO accounts (username, email) VALUES ($1, $2)'
+        result = DatabaseConnection.exec_params(sql, [account.username, account.email])
+
+        return result
+    end
   
     # def update(student)
     # end

@@ -17,7 +17,8 @@ class Application < Sinatra::Base
   end
 
   get '/' do 
-    @post_feed = PostsRepository.new.all
+    allposts = PostsRepository.new.all
+    @post_feed = allposts.reverse
     return erb(:index)
   end
 
@@ -35,5 +36,19 @@ class Application < Sinatra::Base
 
     repo.new(post)
     return erb(:post_created)
+  end
+
+  get '/accounts/new' do 
+    return erb(:new_account)
+  end
+
+  post '/accounts' do 
+    repo = AccountsRepository.new
+    account = Account.new
+    account.username = params[:username]
+    account.email = params[:email]
+
+    repo.create(account)
+    return erb(:account_created)
   end
 end

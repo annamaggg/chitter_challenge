@@ -28,4 +28,20 @@ describe Application do
             expect(response.body).to include('<h1>Post was created</h1>')
         end
     end
+
+    context "GET /accounts/new" do 
+        it "takes you to create account page" do 
+            response = get('/accounts/new')
+            expect(response.status).to eq(200)
+            expect(response.body).to include('<h1>Create new account</h1>')
+        end 
+
+        it "creates an account" do 
+            response = post('/accounts', username: 'mistertom', email: 'misterious@email.com')
+            expect(response.status).to eq(200)
+            expect(response.body).to include('<h1>Account was created</h1>')
+            all_accounts = AccountsRepository.new.all
+            expect(all_accounts.length).to eq(5)
+        end
+    end
 end

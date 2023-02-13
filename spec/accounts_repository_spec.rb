@@ -18,4 +18,15 @@ describe AccountsRepository do
         expect(all.length).to eq(4)
         expect(all[0].username).to eq('am02034')
     end
+
+    it "adds new account" do 
+        repo = AccountsRepository.new
+        account = Account.new
+        account.username = "tommag"
+        account.email = "tommaggers@email.com"
+        repo.create(account)
+
+        expect(repo.all.length).to eq(5)
+        expect(repo.all.last.username).to eq('tommag')
+    end
 end
