@@ -1,21 +1,75 @@
 <html>
-    <head></head>
+    <head>
+        <style>
+            .post {
+                display: block;
+                background: peachpuff;
+                padding: 5px 30px;
+                width: 50%;
+                margin: 15px 23%;
+                border-radius: 10px;
+            }
+            .navbar {
+                background: indianred;
+                margin: 20px 10%;
+                padding: 10px 15px;
+                overflow: hidden;
+                width: 80%;
+                border-radius: 20px;
+            }
+            .title {
+                display: block;
+                font-weight: 900;
+                font-style: italic;
+                float: left;
+                padding: 14px 16px;
+                text-align: center;
+                margin: 0;
+                color: white;
+            }
+            .nav-button {
+                display: block;
+                text-align: center;
+                float: right;
+                padding: 14px 16px;
+                margin: 10px 10px;
+                border-radius: 20px;
+                color: white;
+                background: lightsalmon;
+                text-decoration: none;
+            }
+            .username {
+                display: block;
+                text-align: center;
+                float: right;
+                padding: 14px 16px;
+            }
+            .date {
+                float: right;
+                transform: translateY(-70px);
+            }
+        </style>
+    </head>
     <body>
-        <h1>Chitter</h1>
-        <%if @loggedin%>
-            <p>logged in</p>
-            <a href="/logout">Logout</a>
-            <a href="/posts/new">Create a post</a>
-            <%=@user.username%>    
-        <%else%>
-            <p>not logged in</p>
-            <a href="/login">Login</a>
-            <a href="/signup">Sign up</a>
-        <%end%>
-        <%@post_feed.each do |post|%>
+        <div class="navbar">
+            <h1 class="title">Chitter</h1>
+            <%if @loggedin%>
+                <a class="nav-button" href="/logout">Logout</a>
+                <p class="username"><%=@user.username%></p>
+            <%else%>
+                <a class="nav-button" href="/login">Login</a>
+                <a class="nav-button" href="/signup">Sign up</a>
+            <%end%>
+        </div>
         <div>
+            <%if @loggedin%>
+                <a href="/posts/new">Create a post</a>
+            <%end%>
+        </div>
+        <%@post_feed.each do |post|%>
+        <div class="post">
             <h2><%=post.title%></h2>
-            <h3><%=post.time_stamp%></h3>
+            <h3 class="date"><%=post.time_stamp%></h3>
             <p><%=post.content%></p>
         </div>
         <%end%>
