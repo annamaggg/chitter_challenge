@@ -2,8 +2,15 @@
     <head></head>
     <body>
         <h1>Chitter</h1>
-        <a href="/posts/new">Create a post</a>
-        <a href="/accounts/new">Create an account</a>
+        <%if @loggedin%>
+            <p>logged in</p>
+            <a href="/posts/new">Create a post</a>
+            <%=@user.username%>    
+        <%else%>
+            <p>not logged in</p>
+            <a href="/login">Login</a>
+            <a href="/signup">Sign up</a>
+        <%end%>
         <%@post_feed.each do |post|%>
         <div>
             <h2><%=post.title%></h2>

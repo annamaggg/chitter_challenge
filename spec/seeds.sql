@@ -3,7 +3,8 @@ DROP TABLE IF EXISTS accounts, posts;
 CREATE TABLE accounts (
   id SERIAL PRIMARY KEY,
   username text,
-  email text
+  email text,
+  passkey text
 );
 
 -- Then the table with the foreign key first.
@@ -21,10 +22,10 @@ CREATE TABLE posts (
 
 TRUNCATE TABLE accounts, posts RESTART IDENTITY;
 
-INSERT INTO accounts (username, email) VALUES ('am02034', 'annamag@email.com');
-INSERT INTO accounts (username, email) VALUES ('go4554', 'gerry@email.co.uk');
-INSERT INTO accounts (username, email) VALUES ('ad7733', 'anadiaz@email.co.uk');
-INSERT INTO accounts (username, email) VALUES ('te1221', 'tedwards@email.com');
+INSERT INTO accounts (username, email, passkey) VALUES ('am02034', 'annamag@email.com', 'pass1');
+INSERT INTO accounts (username, email, passkey) VALUES ('go4554', 'gerry@email.co.uk', 'pass2');
+INSERT INTO accounts (username, email, passkey) VALUES ('ad7733', 'anadiaz@email.co.uk', 'pass3');
+INSERT INTO accounts (username, email, passkey) VALUES ('te1221', 'tedwards@email.com', 'pass4');
 
 INSERT INTO posts (title, content, time_stamp, account_id) VALUES ('Tuesday', 'I feel happy', '14/09/2011 17:02', (SELECT id FROM accounts WHERE username='am02034'));
 INSERT INTO posts (title, content, time_stamp, account_id) VALUES ('Wednesday', 'I finished my exam!', '14/12/2015 18:42', (SELECT id FROM accounts WHERE username='go4554'));

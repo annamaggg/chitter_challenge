@@ -30,18 +30,53 @@ describe Application do
     end
 
     context "GET /accounts/new" do 
-        it "takes you to create account page" do 
+        xit "takes you to create account page" do 
             response = get('/accounts/new')
             expect(response.status).to eq(200)
             expect(response.body).to include('<h1>Create new account</h1>')
         end 
 
-        it "creates an account" do 
-            response = post('/accounts', username: 'mistertom', email: 'misterious@email.com')
+        xit "creates an account" do 
+            response = post('/accounts', username: 'mistertom', email: 'misterious@email.com', passkey: 'pass5')
             expect(response.status).to eq(200)
             expect(response.body).to include('<h1>Account was created</h1>')
             all_accounts = AccountsRepository.new.all
             expect(all_accounts.length).to eq(5)
+            expect(all_accounts.last.passkey).to eq('pass5')
+        end
+    end
+
+    context "GET /signup and POST /signup" do 
+        it "takes you to signup page" do 
+            response = get('signup')
+            expect(response.status).to eq(200)
+        end
+
+        it "signs up a user" do 
+            all_accounts = AccountsRepository.new.all.length
+            response = post('/signup', username: 'gob', email: 'gob@gob.com', passkey: '123')
+            all_accounts_updated = AccountsRepository.new.all.length
+            expect(response.status).to eq(200)
+            expect(response.body).to include('<h1>Account was created</h1>')
+            expect(all_accounts_updated).to eq(all_accounts + 1)
+        end
+    end
+
+    context "POST /login" do 
+        it "throws error when password incorrect" do
+            response = post('/login', username: 'go4554', password: 'hello')
+            expect(response.status).to eq(200)
+            expect(response.body).to include('Password is incorrect, please try again')
+        end
+        it "throws error when username doesnt exist" do 
+            response = post('/login', username: 'abcd', password: 'efg')
+            expect(response.status).to eq(200)
+            expect(response.body).to include("Username does not exist")
+        end
+        it "logs in successfully and creates session" do 
+            response = post('/login', username: 'am02034', passkey: 'pass1')
+            expect(response.status).to eq(200)
+            expect(response.body).to include('<h1>Logged in successfully</h1>')
         end
     end
 end
