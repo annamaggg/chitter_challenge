@@ -75,8 +75,30 @@ describe Application do
         end
         it "logs in successfully and creates session" do 
             response = post('/login', username: 'am02034', passkey: 'pass1')
+            
+            expect(response.body).to include('<h1>Logged in successfully</h1>')
+            expect(response.status).to eq(200)
+        end
+        xit "logs out successfully and ends session" do 
+            response = get('/')
+            expect(response.status).to eq(200)
+            expect(response.body).to include('Chitter')
+
+            expect(response.status).to eq(200)
+        end
+    end
+
+    context "GET /logout" do
+        xit "logs in, logs out and returns to home page" do
+            response = post('/login', username: 'go4554', password: 'pass2')
             expect(response.status).to eq(200)
             expect(response.body).to include('<h1>Logged in successfully</h1>')
+
+            get('/')
+            response2 = get('/logout')
+            expect(response.status).to eq(200)
+            expect(response.body).to include('login')
+            expect(response.body).to include('signup')
         end
     end
 end

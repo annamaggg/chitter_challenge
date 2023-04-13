@@ -50,7 +50,8 @@ class Application < Sinatra::Base
         if session[:user_id] == nil
           return "no session"
         else
-          redirect '/login_success'
+          # redirect '/login_success'
+          erb(:login_success)
         end
       else
         @error = "Password is incorrect, please try again"
