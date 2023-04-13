@@ -4,6 +4,7 @@
         <h1>Chitter</h1>
         <%if @loggedin%>
             <p>logged in</p>
+            <a href="/logout">Logout</a>
             <a href="/posts/new">Create a post</a>
             <%=@user.username%>    
         <%else%>

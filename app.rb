@@ -62,6 +62,17 @@ class Application < Sinatra::Base
     end
   end 
 
+  get '/logout' do
+    session.clear
+    session[:user_id] = account.id
+        if session[:user_id] == nil
+          puts "no login session"
+        else
+          puts "still logged in"
+        end
+    redirect '/'
+  end
+
   get '/' do 
     current_user_id = session[:user_id]
 
