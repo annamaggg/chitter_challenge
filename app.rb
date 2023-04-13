@@ -64,7 +64,6 @@ class Application < Sinatra::Base
 
   get '/logout' do
     session.clear
-    session[:user_id] = account.id
         if session[:user_id] == nil
           puts "no login session"
         else
