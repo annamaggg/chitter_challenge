@@ -79,12 +79,21 @@ describe Application do
             expect(response.body).to include('<h1>Logged in successfully</h1>')
             expect(response.status).to eq(200)
         end
-        xit "logs out successfully and ends session" do 
-            response = get('/')
+        it "logs out successfully and ends session" do 
+            response = post('/login', username: 'am02034', passkey: 'pass1')
+            expect(response.body).to include('<h1>Logged in successfully</h1>')
             expect(response.status).to eq(200)
-            expect(response.body).to include('Chitter')
 
-            expect(response.status).to eq(200)
+            response1 = get('/')
+            expect(response1.status).to eq(200)
+            expect(response1.body).to include('Chitter')
+            expect(response1.body).to include('am02034')
+
+            response2 = get('/logout')
+            response3 = get('/')
+            expect(response3.status).to eq(200)
+            expect(response3.body).to include('Chitter')
+            expect(response3.body).to include('login')
         end
     end
 
