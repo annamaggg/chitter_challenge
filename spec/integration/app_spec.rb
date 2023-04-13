@@ -30,13 +30,13 @@ describe Application do
     end
 
     context "GET /accounts/new" do 
-        xit "takes you to create account page" do 
+        it "takes you to create account page" do 
             response = get('/accounts/new')
             expect(response.status).to eq(200)
             expect(response.body).to include('<h1>Create new account</h1>')
         end 
 
-        xit "creates an account" do 
+        it "creates an account" do 
             response = post('/accounts', username: 'mistertom', email: 'misterious@email.com', passkey: 'pass5')
             expect(response.status).to eq(200)
             expect(response.body).to include('<h1>Account was created</h1>')
@@ -94,20 +94,6 @@ describe Application do
             expect(response3.status).to eq(200)
             expect(response3.body).to include('Chitter')
             expect(response3.body).to include('login')
-        end
-    end
-
-    context "GET /logout" do
-        xit "logs in, logs out and returns to home page" do
-            response = post('/login', username: 'go4554', password: 'pass2')
-            expect(response.status).to eq(200)
-            expect(response.body).to include('<h1>Logged in successfully</h1>')
-
-            get('/')
-            response2 = get('/logout')
-            expect(response.status).to eq(200)
-            expect(response.body).to include('login')
-            expect(response.body).to include('signup')
         end
     end
 end
