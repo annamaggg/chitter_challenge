@@ -1,9 +1,41 @@
 <html>
-    <head></head>
+    <head>
+      <style>
+        .back {
+          border-radius: 20px;
+          color: white;
+          background: lightsalmon;
+          text-decoration: none;
+          padding: 14px 16px;
+          margin: 10px 10px;
+          transform: translateY(20px);
+        }
+        .container {
+          margin: auto;
+          background: salmon;
+          width: 20%;
+          padding: 30px 0px;
+          border-radius: 20px;
+        }
+        .signup {
+          margin: auto;
+          padding: 20px 2px;
+          width: 80%;
+          text-align: center;  
+        }
+        .form {
+          display: column;
+          justify-items: center;
+          margin: auto;
+          text-align: center;
+        }
+      </style>
+    </head>
     <body>
-        <a href="/">Back</a>
-        <h1>Sign up</h1>
-          <form action="/signup" method="POST">
+        <a class="back" href="/">Back</a>
+        <div class="container" >
+        <h1 class="signup">Sign up</h1>
+          <form class="form" action="/signup" method="POST">
             <label for="username">Username</label><br>
             <input type="text" id="username" name="username"><br><br>
 
@@ -15,5 +47,6 @@
 
             <input type="submit" name="Submit"><br>
           </form>
+          </div>
     </body>
 </html>
