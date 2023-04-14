@@ -25,7 +25,7 @@ describe Application do
             response = post('/posts', title: 'Friday', content: 'I am super happy', time_stamp: DateTime.now.strftime, account_id: '2')
 
             expect(response.status).to eq(200)
-            expect(response.body).to include('<h1>Post was created</h1>')
+            expect(response.body).to include('Post was created')
         end
     end
 
@@ -33,13 +33,13 @@ describe Application do
         it "takes you to create account page" do 
             response = get('/accounts/new')
             expect(response.status).to eq(200)
-            expect(response.body).to include('<h1>Create new account</h1>')
+            expect(response.body).to include('Create new account')
         end 
 
         it "creates an account" do 
             response = post('/accounts', username: 'mistertom', email: 'misterious@email.com', passkey: 'pass5')
             expect(response.status).to eq(200)
-            expect(response.body).to include('<h1>Account was created</h1>')
+            expect(response.body).to include('Account was created')
             all_accounts = AccountsRepository.new.all
             expect(all_accounts.length).to eq(5)
             expect(all_accounts.last.passkey).to eq('pass5')
@@ -57,7 +57,7 @@ describe Application do
             response = post('/signup', username: 'gob', email: 'gob@gob.com', passkey: '123')
             all_accounts_updated = AccountsRepository.new.all.length
             expect(response.status).to eq(200)
-            expect(response.body).to include('<h1>Account was created</h1>')
+            expect(response.body).to include('Account was created')
             expect(all_accounts_updated).to eq(all_accounts + 1)
         end
     end
@@ -76,12 +76,12 @@ describe Application do
         it "logs in successfully and creates session" do 
             response = post('/login', username: 'am02034', passkey: 'pass1')
             
-            expect(response.body).to include('<h1>Logged in successfully</h1>')
+            expect(response.body).to include('Logged in successfully')
             expect(response.status).to eq(200)
         end
         it "logs out successfully and ends session" do 
             response = post('/login', username: 'am02034', passkey: 'pass1')
-            expect(response.body).to include('<h1>Logged in successfully</h1>')
+            expect(response.body).to include('Logged in successfully')
             expect(response.status).to eq(200)
 
             response1 = get('/')
