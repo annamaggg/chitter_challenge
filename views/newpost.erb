@@ -1,12 +1,44 @@
 <html>
-    <head></head>
+    <head>
+        <style>
+            .space {
+          margin: 20px 0px;
+        }
+        .container {
+          margin: auto;
+          background: salmon;
+          width: 20%;
+          padding: 30px 0px;
+          border-radius: 20px;
+        }
+        .login {
+          margin: auto;
+          padding: 20px 2px;
+          width: 80%;
+          text-align: center;  
+        }
+        .form {
+          display: column;
+          justify-items: center;
+          margin: auto;
+          text-align: center;
+        }
+        </style>
+    </head>
     <body>
-        <h1>Create new post</h1>
-        <form action="/posts" method="POST">
-            <input type="text" name="title">
-            <input type="text" name="content">
-            <input type="text" name="artist_id">
-            <input type="submit" name="Submit post">
-        </form>
+    <div class="container">
+        <h1 class="login">Create new post</h1>
+            <form class="form" action="/posts" method="POST">
+                <label class="element" for="title">Title</label><br>
+                <input type="text" name="title"><br>
+
+                <label class="element" for="content">Content</label><br>
+                <input type="text" name="content"><br>
+
+                <label class="element" for="artist_id">User id</label><br>
+                <input type="text" name="artist_id"><br>
+                <input type="submit" name="Submit post">
+            </form>
+        </div>
     </body>
 </html>

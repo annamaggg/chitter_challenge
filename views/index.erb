@@ -48,6 +48,18 @@
                 float: right;
                 transform: translateY(-65px);
             }
+            .create-post {
+                display: block;
+                text-align: center;
+                margin: auto;
+                text-decoration: none;
+                padding: 14px 16px;
+                border-radius: 20px;
+                color: white;
+                background: lightsalmon;
+                margin: 5px 500px;
+                font-size: 20px;
+            }
         </style>
     </head>
     <body>
@@ -63,7 +75,7 @@
         </div>
         <div>
             <%if @loggedin%>
-                <a href="/posts/new">Create a post</a>
+                <a class="create-post" href="/posts/new">Create a post</a>
             <%end%>
         </div>
         <%@post_feed.each do |post|%>
