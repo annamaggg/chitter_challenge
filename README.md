@@ -2,7 +2,7 @@
 <div align="center">
 
   <h3 align="center">Chitter</h3>
-  <img width="861" alt="image" src="https://github.com/annamaggg/makers_bnb/blob/0afea1f5f8c47994158bbcc1f77b1a99a020d6cd/public/homepage-screenshot.png">
+  <img width="861" alt="image" src="https://github.com/annamaggg/chitter_challenge/blob/bfa399753bdf24a90daba1bd7d6fffb3a3a67c89/lib/screenshot.png">
    
 </div>
 
