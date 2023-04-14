@@ -1,9 +1,36 @@
 <html>
-    <head></head>
+    <head>
+        <style>
+            .container {
+            margin: auto;
+            width: 20%;
+            padding: 30px 0px;
+            border-radius: 20px;
+            }
+            .text {
+                display: block;
+                font-weight: 900;
+                font-style: italic;
+                text-align: center;
+            }
+            .back {
+                display: block;
+                border-radius: 20px;
+                color: white;
+                background: lightsalmon;
+                text-decoration: none;
+                padding: 14px 16px;
+                text-align: center;
+                margin: 0px 60px;
+            }
+        </style>
+    </head>
     <body>
-        <h1>Logged in successfully</h1>
-        <a href="/">Back to feed</a>
+        <div class="container">
+        <h1 class="text">Logged in successfully</h1>
+        <a class="back" href="/">Back to feed</a>
         <p><%=@session%></p>
         <p><%=@test%></p>
+        </div>
     </body>
 </html>
